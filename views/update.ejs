@@ -1,0 +1,149 @@
+<%- include("partials/header")  %>
+<nav class="navbar-light" aria-label="breadcrumb" style="background-color: #e3f2fd;">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Update Contact</li>
+    </ol>
+</nav>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="offset-sm-2 col-sm-8">
+            <div class="card">
+                <div class="card-header h3">
+                    Update Existing Contact
+                </div>
+                <div class="card-body">
+                    <form action="/contact/<%= contact._id %>?_method=PUT" method="POST">
+                        <div class="form-group">
+                            <label for="contactName">Name</label>
+                            <input type="text" class="form-control" id="checker" name="contact[contactName]"
+                                value="<%= contact.contactName %> ">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactDOB">DOB</label>
+                            <input type="text" class="form-control" id="contactDOB" name="contact[contactDOB]"
+                                value="<%= contact.contactDOB %> ">
+                        </div>
+                        <label for="contactPhone">Mobile Number</label>
+                        <% contact.contactPhone
+                        .forEach(function(phone,i){ %>
+                        <% if(phone.length > 0){ %>
+
+
+
+                        <% if (i == 0) { %>
+                        <div class="form-group input-group">
+                            <input type="text" class="form-control" id="contactPhone" name="contact[contactPhone[]]"
+                                value="<%= phone%> ">
+                            <div class="input-group-append">
+                                <span class="input-group-text" onclick="addPhone();">
+                                    <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+                                        <path fill-rule="evenodd"
+                                            d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+                                    </svg>
+                                </span>
+                                <%} else { %>
+                                <div class="form-group input-group" id="remove">
+                                    <input type="text" class="form-control" class="remove"
+                                        name="contact[contactPhone[]]" value="<%= phone%> ">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" class="remove" onclick="removeElement();">
+                                            <svg class="bi bi-dash" width="1em" height="1em" viewBox="0 0 16 16"
+                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z" />
+                                            </svg>
+                                        </span>
+                                        <% } %>
+
+                                        <% } %>
+
+                                    </div>
+                                </div>
+                                <div id="alternatePhone"></div>
+                                <% }); %>
+
+                                <label for="contactEmail">Email</label>
+                                <% contact.contactEmail
+                        .forEach(function(email,i){ %>
+                                <% if(email.length > 0){ %>
+                                <% if (i == 0) { %>
+                                <div class="form-group input-group">
+                                    <input type="text" class="form-control" id="contactEmail" placeholder="Email"
+                                        name="contact[contactEmail[]]" value="<%= email %> ">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" onclick="addEmail();">
+                                            <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16"
+                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+                                            </svg>
+                                        </span>
+                                        <%} else { %>
+                                        <div class="form-group input-group" id="remove1">
+                                            <input type="text" class="form-control" id="contactEmail"
+                                                placeholder="Email" name="contact[contactEmail[]]"
+                                                value="<%= email %> ">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" class="remove"
+                                                    onclick="removeElement1();">
+                                                    <svg class="bi bi-dash" width="1em" height="1em" viewBox="0 0 16 16"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z" />
+                                                    </svg>
+                                                </span>
+                                                <% } %>
+
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <div id="alternateEmail"></div>
+                                        <% }); %>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Update
+                                            Contact</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function removeElement() {
+            var element = document.getElementById('remove');
+            element.parentNode.removeChild(element);
+        }
+        function removeElement1() {
+            var element = document.getElementById('remove1');
+            element.parentNode.removeChild(element);
+        }
+        function addPhone() {
+            document.getElementById('alternatePhone').innerHTML += `
+            <input type="text" class="form-control" placeholder="Phone"
+                                name="contactPhone[]" value="${document.getElementById('contactPhone').value}">
+            `
+
+            document.getElementById('contactPhone').value = '';
+        }
+        function addEmail() {
+            document.getElementById('alternateEmail').innerHTML += `
+            <input type="text" class="form-control" placeholder="Email"
+                                name="contactEmail[]" value="${document.getElementById('contactEmail').value}">
+            `
+
+            document.getElementById('contactEmail').value = '';
+        }
+    </script>
+
+    <%- include("partials/footer")  %>

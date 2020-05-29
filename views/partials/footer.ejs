@@ -1,0 +1,19 @@
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.collapse').on('shown.bs.collapse', function () {
+            $(this).parent().find('.fa-chevron-down')
+                .removeClass('fa-chevron-down')
+                .addClass('fa-chevron-up');
+        }).on('hidden.bs.collapse', function () {
+            $(this).parent().find(".fa-chevron-up")
+                .removeClass("fa-chevron-up")
+                .addClass("fa-chevron-down");
+        });
+    });
+</script>
+</body>
+
+</html>
