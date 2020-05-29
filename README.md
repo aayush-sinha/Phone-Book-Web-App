@@ -19,3 +19,16 @@ npm start
 1. Add new Contacts : 
 
 <img src="images/add.png">
+
+2. Search :
+
+<img src="images/seacrch.png">
+<img src="images/phonesearch.png">
+
+3. Edit/Delete :
+
+<img src="images/edit.png>
+
+4. Pagination :
+
+<img src="images/pagination.png">
