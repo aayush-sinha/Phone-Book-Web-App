@@ -14,3 +14,8 @@ Start the server
 ```bash
 npm start
 ```
+## Application Features/Components
+
+1. Add new Contacts : 
+
+<img src="images/add.png">
